@@ -46,12 +46,14 @@ class Model
     save()
     {
         const main = document.querySelector('main')
-        main.innerHTML += '<br>{'
-        for(let i = 0; i < this.elements.length - 1; i++)
-        {
-            main.innerHTML += `"${this.elements[i].key}" : "${this.elements[i].value}",`
+        const savedData = document.querySelector('.savedData')
+        let content = '<br>{'
+        for(let i = 0; i < this.elements.length - 1; i++) {
+            content += `"${this.elements[i].key}" : "${this.elements[i].value}",`
         }
-        main.innerHTML += `"${this.elements[this.elements.length - 1].key}" : "${this.elements[this.elements.length - 1].value}"}`
+        content += `"${this.elements[this.elements.length - 1].key}" : "${this.elements[this.elements.length - 1].value}"}`
+        savedData.innerHTML = content
+        main.appendChild(savedData)
         render(this.elements.length, this.elements)
     }
 }
